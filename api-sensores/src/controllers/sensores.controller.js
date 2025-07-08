@@ -1,3 +1,4 @@
+
 const Sensor = require('../models/sensor.model');
 
 exports.create = async (req, res) => {
@@ -15,12 +16,16 @@ exports.create = async (req, res) => {
     const sensor = new Sensor({ temperatura, umidade, luminosidade });
     await sensor.save();
 
+    // 🔥 Emitir evento via WebSocket
+    req.io.emit('novo-dado', sensor); 
+
     res.status(201).json({ message: 'Dados salvos com sucesso', sensor });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Erro ao salvar dados' });
   }
 };
+
 
 // quero de get todos os sensores
 exports.findAll = async (req, res) => {

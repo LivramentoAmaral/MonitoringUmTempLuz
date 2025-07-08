@@ -27,9 +27,9 @@ i2c_oled =SoftI2C(scl=Pin(15), sda=Pin(14))
 oled = SSD1306_I2C(128, 64, i2c_oled)
 
 api_sender = ApiSender(
-    url="http://10.8.45.142:5000/api/sensores",
-    ssid="Embarca",
-    password="EmbarcaTech01"
+    url="http://192.168.0.102:5000/api/sensores",
+    ssid="rede",
+    password="internet"
 )
 
 while True:
