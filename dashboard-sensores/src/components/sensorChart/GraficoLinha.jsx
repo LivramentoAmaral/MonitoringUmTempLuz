@@ -31,13 +31,13 @@ export default function GraficoLinha({ titulo, dados, dataKey, cor, icon: Icon, 
       sx={{
         mt: { xs: 3, md: 5 },
         mb: 4,
-        backgroundColor: '#f9fafb',
+        backgroundColor: '#141414', // Black
         borderRadius: 3,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.6)',
         px: { xs: 1, md: 3 },
         pt: 2,
         pb: 3,
-        overflowX: 'auto', // Se necessário, evita quebra
+        overflowX: 'auto',
       }}
     >
       <Typography
@@ -50,6 +50,7 @@ export default function GraficoLinha({ titulo, dados, dataKey, cor, icon: Icon, 
           gap: 1,
           color: cor,
           mb: 1.5,
+          userSelect: 'none',
         }}
       >
         <Icon fontSize="medium" />
@@ -60,10 +61,11 @@ export default function GraficoLinha({ titulo, dados, dataKey, cor, icon: Icon, 
         elevation={0}
         sx={{
           p: { xs: 1, md: 2 },
-          backgroundColor: '#ffffff',
-          border: `1px solid ${cor}33`,
+          backgroundColor: '#142814', // Dark Jungle Green
+          border: `1px solid ${cor}33`, // cor com transparência
           borderLeft: `6px solid ${cor}`,
           borderRadius: 2,
+          color: 'white',
         }}
       >
         <Box sx={{ width: '100%', minWidth: 320 }}>
@@ -72,22 +74,24 @@ export default function GraficoLinha({ titulo, dados, dataKey, cor, icon: Icon, 
               data={dados}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
-              <CartesianGrid stroke="#e0e0e0" strokeDasharray="4 4" />
+              <CartesianGrid stroke="#78503c66" strokeDasharray="4 4" /> {/* Mud com transparência */}
               <XAxis
                 dataKey="data"
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 12, fill: '#cccccc' }}
                 tickFormatter={(val) =>
                   new Date(val).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
                 }
-                stroke="#757575"
+                stroke="#999999"
               />
               <YAxis
-                tick={{ fontSize: 12 }}
-                stroke="#757575"
+                tick={{ fontSize: 12, fill: '#cccccc' }}
+                stroke="#999999"
                 domain={['auto', 'auto']}
               />
               <Tooltip
-                contentStyle={{ backgroundColor: '#fff', borderColor: cor }}
+                contentStyle={{ backgroundColor: '#78503c', borderColor: cor, color: '#fff' }}
+                labelStyle={{ color: '#fff' }}
+                itemStyle={{ color: '#fff' }}
                 labelFormatter={(val) =>
                   new Date(val).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
                 }
@@ -96,13 +100,17 @@ export default function GraficoLinha({ titulo, dados, dataKey, cor, icon: Icon, 
                   name.charAt(0).toUpperCase() + name.slice(1)
                 ]}
               />
-              <Legend verticalAlign="top" height={30} />
+              <Legend 
+                verticalAlign="top" 
+                height={30} 
+                wrapperStyle={{ color: 'white' }} 
+              />
               <Line
                 type="monotone"
                 dataKey={dataKey}
                 stroke={cor}
                 strokeWidth={2.5}
-                dot={{ r: 3 }}
+                dot={{ r: 3, stroke: cor, strokeWidth: 1, fill: '#141414' }}
                 activeDot={{ r: 6 }}
                 isAnimationActive={true}
                 animationDuration={800}

@@ -11,7 +11,7 @@ function SensorGraphs({ dados }) {
         titulo="Temperatura (°C)"
         dados={dados}
         dataKey="temperatura"
-        cor="#ff7043"
+        cor="#a77f67"  // Mud claro
         icon={ThermostatIcon}
         ariaLabel="Gráfico de temperatura em graus Celsius"
       />
@@ -19,7 +19,7 @@ function SensorGraphs({ dados }) {
         titulo="Umidade (%)"
         dados={dados}
         dataKey="umidade"
-        cor="#29b6f6"
+        cor="#3a6b6b"  // MSU Green claro
         icon={WaterDropIcon}
         ariaLabel="Gráfico de umidade relativa do ar"
       />
@@ -27,7 +27,7 @@ function SensorGraphs({ dados }) {
         titulo="Luminosidade (lux)"
         dados={dados}
         dataKey="luminosidade"
-        cor="#fdd835"
+        cor="#7a543d"  // Van Dyke Brown claro
         icon={WbSunnyIcon}
         ariaLabel="Gráfico de luminosidade em lux"
       />
@@ -36,4 +36,3 @@ function SensorGraphs({ dados }) {
 }
 
 export default SensorGraphs;
-
